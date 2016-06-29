@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
   def new
   end
-
-  def create
+def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url
-      flash[:success] = "Yaay! you're in!"
+      redirect_to @user 
+            flash[:success] = "Yaay! you're in!"
     else
       render 'new'
     end
   end
-
+def show
+  @user = User.find(params[:id])
+end
   private
 
   def user_params

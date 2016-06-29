@@ -6,18 +6,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
- test "redirect to root url" do
-    post :create, params: {
-      user:{ 
-        username: "SteGa",
-        email: "stegal@gmail.com",
-        password: "foobar",
-        password_confirmation: "foobar" 
-      }
+ # test "redirect to root url" do
+ #    post :create, params: {
+ #      user:{ 
+ #        username: "SteGa",
+ #        email: "stegal@gmail.com",
+ #        password: "foobar",
+ #        password_confirmation: "foobar" 
+ #      }
 
-    }
-    assert_redirected_to root_url
-  end
+ #    }
+  
   test "should render flash for successful signup" do
     post :create, params: {
       user:{ 
@@ -27,7 +26,9 @@ class UsersControllerTest < ActionController::TestCase
         password_confirmation: "foobar" 
       }
     }
+    assert_redirected_to User.last
     assert_match "Yaay! you're in!", flash[:success]
+    
   end
 
  
