@@ -2,15 +2,16 @@
 <table>
 <thead>
 <tr>
+<th>name</th>
 <th>Email</th>
-<th>Created_at</th>
+<th><%=link_to "created_at", users_path(sort: "username")%></th>
 </tr>
 </thead>
 <% @users.each do |user| %>
 <tr>
 <td><%= user.username %></td>
 <td><%= user.email %></td>
-<td><%= user.created_at %></td>
+<th><%=user.created_at%></th>
 </tr>
 <% end %>
 </table>
